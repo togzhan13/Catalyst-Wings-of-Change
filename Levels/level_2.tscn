@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://487lmgu0ta28"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_5s13g"]
+[ext_resource type="PackedScene" uid="uid://nu014y4h7y2n" path="res://player.tscn" id="2_hnj45"]
+[ext_resource type="PackedScene" uid="uid://d26kd2xns27uv" path="res://tile_map2.tscn" id="2_oepps"]
+[ext_resource type="PackedScene" uid="uid://dfnhgu7c2477b" path="res://danger.tscn" id="3_6lfte"]
+[ext_resource type="Texture2D" uid="uid://8mwtnuf1nd7w" path="res://Sprites/robotototo.png" id="4_5lhou"]
+[ext_resource type="PackedScene" uid="uid://dhusf5q4yhic2" path="res://person.tscn" id="4_65f21"]
+[ext_resource type="PackedScene" uid="uid://cwi0yema3p88v" path="res://wall.tscn" id="5_fklac"]
+[ext_resource type="PackedScene" uid="uid://f8wfbthgmcuk" path="res://finish.tscn" id="6_s6bvw"]
+
+[node name="level_2" type="Node2D"]
+script = ExtResource("1_5s13g")
+
+[node name="TileMap" parent="." instance=ExtResource("2_oepps")]
+
+[node name="person" parent="." instance=ExtResource("4_65f21")]
+position = Vector2(501, 545)
+scale = Vector2(0.25, 0.25)
+
+[node name="person2" parent="." instance=ExtResource("4_65f21")]
+position = Vector2(496, 88)
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" parent="person2" index="1"]
+texture = ExtResource("4_5lhou")
+
+[node name="OuterWalls" type="Node2D" parent="."]
+
+[node name="wall" parent="OuterWalls" instance=ExtResource("5_fklac")]
+
+[node name="wall2" parent="OuterWalls" instance=ExtResource("5_fklac")]
+position = Vector2(1140, 1)
+scale = Vector2(1, 0.36)
+
+[node name="wall5" parent="OuterWalls" instance=ExtResource("5_fklac")]
+position = Vector2(1142, 412)
+scale = Vector2(1, 0.36)
+
+[node name="wall3" parent="OuterWalls" instance=ExtResource("5_fklac")]
+position = Vector2(1162, -31)
+rotation = 1.5708
+scale = Vector2(1, 1.8)
+
+[node name="wall4" parent="OuterWalls" instance=ExtResource("5_fklac")]
+position = Vector2(1171, 634)
+rotation = 1.5708
+scale = Vector2(1, 1.8)
+
+[node name="InnerWalls" type="Node2D" parent="."]
+
+[node name="finish" parent="." instance=ExtResource("6_s6bvw")]
+position = Vector2(1169, 231)
+scale = Vector2(1, 2.68)
+
+[node name="wall" parent="." instance=ExtResource("5_fklac")]
+position = Vector2(691, 123)
+scale = Vector2(1, 0.6)
+
+[node name="danger" parent="." instance=ExtResource("3_6lfte")]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(0, -8)
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+
+[node name="player" parent="." instance=ExtResource("2_hnj45")]
+
+[editable path="person2"]

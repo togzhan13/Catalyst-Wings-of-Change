@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4k2ll0bk4xsr"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_7dn6w"]
+[ext_resource type="PackedScene" uid="uid://nu014y4h7y2n" path="res://player.tscn" id="2_odb1e"]
+[ext_resource type="PackedScene" uid="uid://d26kd2xns27uv" path="res://tile_map2.tscn" id="2_xt63u"]
+[ext_resource type="PackedScene" uid="uid://dfnhgu7c2477b" path="res://danger.tscn" id="3_jepnm"]
+[ext_resource type="Texture2D" uid="uid://8mwtnuf1nd7w" path="res://Sprites/robotototo.png" id="4_5jigx"]
+[ext_resource type="PackedScene" uid="uid://dhusf5q4yhic2" path="res://person.tscn" id="4_afi6m"]
+[ext_resource type="PackedScene" uid="uid://cwi0yema3p88v" path="res://wall.tscn" id="5_lqdxa"]
+[ext_resource type="PackedScene" uid="uid://f8wfbthgmcuk" path="res://finish.tscn" id="6_qyrim"]
+[ext_resource type="PackedScene" uid="uid://cg7kymbgoyrg5" path="res://portal1.tscn" id="7_hjgou"]
+[ext_resource type="PackedScene" uid="uid://dshxi18fvao71" path="res://portal2.tscn" id="8_conif"]
+
+[node name="level_13" type="Node2D"]
+script = ExtResource("1_7dn6w")
+
+[node name="TileMap" parent="." instance=ExtResource("2_xt63u")]
+
+[node name="person" parent="." instance=ExtResource("4_afi6m")]
+position = Vector2(601, 131)
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" parent="person" index="1"]
+texture = ExtResource("4_5jigx")
+
+[node name="person2" parent="." instance=ExtResource("4_afi6m")]
+position = Vector2(652, 357)
+scale = Vector2(0.25, 0.25)
+
+[node name="OuterWalls" type="Node2D" parent="."]
+
+[node name="wall" parent="OuterWalls" instance=ExtResource("5_lqdxa")]
+
+[node name="wall2" parent="OuterWalls" instance=ExtResource("5_lqdxa")]
+position = Vector2(1140, 1)
+scale = Vector2(1, 0.36)
+
+[node name="wall5" parent="OuterWalls" instance=ExtResource("5_lqdxa")]
+position = Vector2(1142, 412)
+scale = Vector2(1, 0.36)
+
+[node name="wall3" parent="OuterWalls" instance=ExtResource("5_lqdxa")]
+position = Vector2(1162, -31)
+rotation = 1.5708
+scale = Vector2(1, 1.8)
+
+[node name="wall4" parent="OuterWalls" instance=ExtResource("5_lqdxa")]
+position = Vector2(1171, 634)
+rotation = 1.5708
+scale = Vector2(1, 1.8)
+
+[node name="InnerWalls" type="Node2D" parent="."]
+
+[node name="wall" parent="InnerWalls" instance=ExtResource("5_lqdxa")]
+position = Vector2(672, 1)
+scale = Vector2(1, 0.35951)
+
+[node name="wall3" parent="InnerWalls" instance=ExtResource("5_lqdxa")]
+position = Vector2(351, -6)
+scale = Vector2(1, 0.35951)
+
+[node name="wall2" parent="InnerWalls" instance=ExtResource("5_lqdxa")]
+position = Vector2(713, 199)
+rotation = 1.5708
+scale = Vector2(1, 0.55951)
+
+[node name="finish" parent="." instance=ExtResource("6_qyrim")]
+position = Vector2(1169, 231)
+scale = Vector2(1, 2.68)
+
+[node name="YeetMachines" type="Node" parent="."]
+
+[node name="portal1" parent="." instance=ExtResource("7_hjgou")]
+position = Vector2(460, 123)
+
+[node name="portal1Col" parent="portal1" index="1"]
+position = Vector2(449.725, 114.4)
+
+[node name="CollisionShape2D" parent="portal1/portal1Col" index="0"]
+position = Vector2(-448.725, -112.4)
+
+[node name="Sprite2D2" parent="portal1/AnimationPlayer" index="0"]
+position = Vector2(461.725, 124.4)
+
+[node name="portal2" parent="." instance=ExtResource("8_conif")]
+position = Vector2(454, 529)
+
+[node name="Sprite2D2" parent="portal2/AnimationPlayer" index="0"]
+position = Vector2(455, 529)
+
+[node name="player" parent="." instance=ExtResource("2_odb1e")]
+
+[node name="danger" parent="." instance=ExtResource("3_jepnm")]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(0, -8)
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+
+[editable path="person"]
+[editable path="portal1"]
+[editable path="portal2"]

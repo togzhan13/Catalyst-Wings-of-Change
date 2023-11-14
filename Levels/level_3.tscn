@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfx88t02jk3h4"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_3ytk0"]
+[ext_resource type="PackedScene" uid="uid://d26kd2xns27uv" path="res://tile_map2.tscn" id="2_6w48x"]
+[ext_resource type="PackedScene" uid="uid://nu014y4h7y2n" path="res://player.tscn" id="2_vd1ca"]
+[ext_resource type="PackedScene" uid="uid://dfnhgu7c2477b" path="res://danger.tscn" id="3_saii6"]
+[ext_resource type="PackedScene" uid="uid://dhusf5q4yhic2" path="res://person.tscn" id="4_kwvwk"]
+[ext_resource type="Texture2D" uid="uid://8mwtnuf1nd7w" path="res://Sprites/robotototo.png" id="4_phogm"]
+[ext_resource type="PackedScene" uid="uid://cwi0yema3p88v" path="res://wall.tscn" id="5_h1eo7"]
+[ext_resource type="PackedScene" uid="uid://f8wfbthgmcuk" path="res://finish.tscn" id="6_owq8g"]
+
+[node name="level_3" type="Node2D"]
+script = ExtResource("1_3ytk0")
+
+[node name="TileMap" parent="." instance=ExtResource("2_6w48x")]
+
+[node name="person" parent="." instance=ExtResource("4_kwvwk")]
+position = Vector2(453, 560)
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" parent="person" index="1"]
+texture = ExtResource("4_phogm")
+
+[node name="person2" parent="." instance=ExtResource("4_kwvwk")]
+position = Vector2(599, 83)
+scale = Vector2(0.25, 0.25)
+
+[node name="OuterWalls" type="Node2D" parent="."]
+
+[node name="wall" parent="OuterWalls" instance=ExtResource("5_h1eo7")]
+
+[node name="wall2" parent="OuterWalls" instance=ExtResource("5_h1eo7")]
+position = Vector2(1140, 1)
+scale = Vector2(1, 0.36)
+
+[node name="wall5" parent="OuterWalls" instance=ExtResource("5_h1eo7")]
+position = Vector2(1142, 412)
+scale = Vector2(1, 0.36)
+
+[node name="wall3" parent="OuterWalls" instance=ExtResource("5_h1eo7")]
+position = Vector2(1162, -31)
+rotation = 1.5708
+scale = Vector2(1, 1.8)
+
+[node name="wall4" parent="OuterWalls" instance=ExtResource("5_h1eo7")]
+position = Vector2(1171, 634)
+rotation = 1.5708
+scale = Vector2(1, 1.8)
+
+[node name="InnerWalls" type="Node2D" parent="."]
+
+[node name="wall" parent="InnerWalls" instance=ExtResource("5_h1eo7")]
+position = Vector2(632, 454)
+rotation = 1.5708
+scale = Vector2(1, 0.36)
+
+[node name="wall2" parent="InnerWalls" instance=ExtResource("5_h1eo7")]
+position = Vector2(397, 225)
+scale = Vector2(1, 0.36)
+
+[node name="finish" parent="." instance=ExtResource("6_owq8g")]
+position = Vector2(1169, 231)
+scale = Vector2(1, 2.68)
+
+[node name="danger" parent="." instance=ExtResource("3_saii6")]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(0, -8)
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+
+[node name="player" parent="." instance=ExtResource("2_vd1ca")]
+
+[editable path="person"]
